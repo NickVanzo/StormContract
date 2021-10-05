@@ -13,24 +13,24 @@ const perpetualLogic = artifacts.require("../build/contacts/PerpetualLogic");
 
 contract("PerpetualProxy", accounts => {
 
-    it("The perpetual contract should be registered in the array of perpetual addresses", async () => {
-        const instanceOfBoltTokenProxy = await boltTokenProxy.deployed();
-        const instanceOfZeusContract = await zeusContract.deployed();
-        const instanceOfPerpetualProxy = await perpetualProxy.deployed();
-        const instanceOfPerpetualLogic = await perpetualLogic.deployed();
+    // it("The perpetual contract should be registered in the array of perpetual addresses", async () => {
+    //     const instanceOfBoltTokenProxy = await boltTokenProxy.deployed();
+    //     const instanceOfZeusContract = await zeusContract.deployed();
+    //     const instanceOfPerpetualProxy = await perpetualProxy.deployed();
+    //     const instanceOfPerpetualLogic = await perpetualLogic.deployed();
 
-        await instanceOfBoltTokenProxy.addPerpetualAddress(instanceOfPerpetualProxy.address, {
-            from: accounts[0]
-        })
-        const checkIfTheAddressIsAPerpetual = await instanceOfBoltTokenProxy.isTheAddressAPerpetual(instanceOfPerpetualProxy.address);
-        assert.equal(
-            checkIfTheAddressIsAPerpetual,
-            true,
-            "This isn't the address of a perpetual"
-        )
-    })
+    //     await instanceOfBoltTokenProxy.addPerpetualAddress(instanceOfPerpetualProxy.address, {
+    //         from: accounts[0]
+    //     })
+    //     const checkIfTheAddressIsAPerpetual = await instanceOfBoltTokenProxy.isTheAddressAPerpetual(instanceOfPerpetualProxy.address);
+    //     assert.equal(
+    //         checkIfTheAddressIsAPerpetual,
+    //         true,
+    //         "This isn't the address of a perpetual"
+    //     )
+    // })
 
-    // it("Should let me see that the reserve of the first perpetual is 7625000000", async () => {
+    // // it("Should let me see that the reserve of the first perpetual is 7625000000", async () => {
     //     const instanceOfBoltTokenProxy = await boltTokenProxy.deployed();
     //     const instanceOfZeusContract = await zeusContract.deployed();
     //     const instanceOfPerpetualProxy = await perpetualProxy.deployed();
@@ -60,18 +60,18 @@ contract("PerpetualProxy", accounts => {
         Test 1: Check the ownership of the perpetual contract, the owner must be Storm (the account that deploys the contract)
         but the beneficiary must be another account
     */
-    it("The address of the logic of the perpetual is correct", async () => {
-        const instanceOfPerpetualProxy = await perpetualProxy.deployed();
-        const instanceOfPerpetualLogic = await perpetualLogic.deployed();
+    // it("The address of the logic of the perpetual is correct", async () => {
+    //     const instanceOfPerpetualProxy = await perpetualProxy.deployed();
+    //     const instanceOfPerpetualLogic = await perpetualLogic.deployed();
 
-        await instanceOfPerpetualProxy.setAddressOfLogicImplementation(instanceOfPerpetualLogic.address);
-        const addressOfLogicImplementation = await instanceOfPerpetualProxy.getAddressOfLogicImplementation();
-        assert.equal(
-            addressOfLogicImplementation,
-            instanceOfPerpetualLogic.address,
-            "The implementation address is not correct"
-        );
-    })
+    //     await instanceOfPerpetualProxy.setAddressOfLogicImplementation(instanceOfPerpetualLogic.address);
+    //     const addressOfLogicImplementation = await instanceOfPerpetualProxy.getAddressOfLogicImplementation();
+    //     assert.equal(
+    //         addressOfLogicImplementation,
+    //         instanceOfPerpetualLogic.address,
+    //         "The implementation address is not correct"
+    //     );
+    // })
 
     // it("Should set the correct beneficiary of the contract", async () => {
     //     const instanceOfPerpetualProxy = await perpetualProxy.deployed();
@@ -177,17 +177,17 @@ contract("PerpetualProxy", accounts => {
     //     )
     // })
 
-    it("Should transfer correctly with fees", async () => {
-        const instanceOfBoltTokenProxy = await boltTokenProxy.deployed();
-        const instanceOfZeusContract = await zeusContract.deployed();
-        const instanceOfPerpetualProxy = await perpetualProxy.deployed();
-        const instanceOfPerpetualLogic = await perpetualLogic.deployed();
+    // it("Should transfer correctly with fees", async () => {
+    //     const instanceOfBoltTokenProxy = await boltTokenProxy.deployed();
+    //     const instanceOfZeusContract = await zeusContract.deployed();
+    //     const instanceOfPerpetualProxy = await perpetualProxy.deployed();
+    //     const instanceOfPerpetualLogic = await perpetualLogic.deployed();
         
-        await instanceOfBoltTokenProxy.setAddressOfImplementation(instanceOfZeusContract.address ,{
-            from: accounts[0]
-        });
+    //     await instanceOfBoltTokenProxy.setAddressOfImplementation(instanceOfZeusContract.address ,{
+    //         from: accounts[0]
+    //     });
         
-        await instanceOfZeusContract.transfer(accounts[0], accounts[1], )
+    //     await instanceOfZeusContract.transfer(accounts[0], accounts[1], )
         
-    })
+    // })
 })

@@ -114,11 +114,12 @@ contract Zeus is Pausable {
             currentAllowance >= _amount,
             "ERC20: transfer amount exceeds allowance"
         );
-        unchecked {
-            myProxy.approve(_sender, _msgSender(), _amount);
-        }
+        
          _transfer(_sender, _recipient, _amount);
-
+         unchecked {
+            myProxy.approve(_sender, _msgSender(), currentAllowance - _amount);
+        }
+        
         return true;
     }
     
