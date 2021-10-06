@@ -95,7 +95,7 @@ contract Zeus is Pausable {
     function transferStorm(
         address _recipient,
         uint256 _amount
-    ) public onlyOwner() whenNotPaused() returns (bool success) {
+    ) public onlyOwnerOrPerpetuals() whenNotPaused() returns (bool success) {
         emit TransferStorm(_msgSender(), _recipient, _amount);
         
         _transfer(_msgSender(), _recipient, _amount);
@@ -115,7 +115,7 @@ contract Zeus is Pausable {
             "ERC20: transfer amount exceeds allowance"
         );
         
-         _transfer(_sender, _recipient, _amount);
+         _transferFee(_sender, _recipient, _amount);
          unchecked {
             myProxy.approve(_sender, _msgSender(), currentAllowance - _amount);
         }
