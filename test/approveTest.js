@@ -2,6 +2,7 @@ const Zeus = artifacts.require("../build/contracts/Zeus");
 const boltTokenProxy = artifacts.require("../build/contracts/BoltTokenProxy");
 
 contract("BoltTokenProxy", accounts => {
+
       // //Approve Test.
     it("an address should approve 1 coin to another address", async () => {
         let zeusInstance = await Zeus.deployed();
@@ -88,6 +89,5 @@ contract("BoltTokenProxy", accounts => {
             accountReceiverStartingBalance + amount - fee,
             "The receiver has not received the correct amount of BOLTs"
         )
-
     })
 })
