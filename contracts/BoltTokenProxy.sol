@@ -15,7 +15,6 @@ contract BoltTokenProxy is Ownable {
     event Burn(address indexed _account, uint256 _amount);
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
     event SetAddressOfImplementation(address indexed _implementationAddress);
-    event AddPerpetualAddress(address indexed _newAddress);
 
     // ## GLOBAL VARIABLES ##
     uint256 private currentSupply;
@@ -28,8 +27,6 @@ contract BoltTokenProxy is Ownable {
 
     mapping(address => uint256) private balances;
     mapping(address => mapping(address => uint256)) private allowances;
-
-    mapping(address => bool) private isPerpetualAddress;
 
     // ## MODIFIERS ##
     modifier onlyImplementation() {
@@ -93,14 +90,6 @@ contract BoltTokenProxy is Ownable {
         return balances[_user];
     }
 
-    function isTheAddressAPerpetual(address _address)
-        public
-        view
-        returns (bool)
-    {
-        return isPerpetualAddress[_address];
-    }
-
     function allowance(address _owner, address _spender)
         public
         view
@@ -139,13 +128,6 @@ contract BoltTokenProxy is Ownable {
     }
 
     // ## PUBLIC FUNCTIONS (ONLY OWNER) ##
-    //ADD PERPETUAL ADDRESS
-    function addPerpetualAddress(address _newAddress) public onlyOwner() returns(bool) {
-        emit AddPerpetualAddress(_newAddress);
-        
-        _addPerpetualAddress(_newAddress);
-        return true;
-    }
 
     //BURN
     function burn(address _account, uint256 _amount) public onlyOwner() returns(bool) {
@@ -176,11 +158,6 @@ contract BoltTokenProxy is Ownable {
     }
 
     // ## PRIVATE ##
-    //_ADD PERPETUAL ADDRESS
-    function _addPerpetualAddress(address _newAddress) private {
-        isPerpetualAddress[_newAddress] = true;
-    }
-
     //_BURN
     function _burn(address _account, uint256 _amount) private {
         require(_account != address(0), "ERC20: burn to the zero address");

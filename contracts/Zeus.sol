@@ -20,11 +20,10 @@ contract Zeus is Pausable {
     uint256 private fee;
 
     // ## MODFIERS ##
-    modifier onlyOwnerOrPerpetuals() {
+    modifier onlyOwnerOfProxy() {
         require(
-            _msgSender() == myProxy.owner() ||
-                myProxy.isTheAddressAPerpetual(_msgSender()),
-            "The sender must be either the owner of the proxy or a perpetual contract"
+            _msgSender() == myProxy.owner(),
+            "The sender must be the owner of the proxy"
         );
         _;
     }
@@ -95,7 +94,7 @@ contract Zeus is Pausable {
     function transferStorm(
         address _recipient,
         uint256 _amount
-    ) public onlyOwnerOrPerpetuals() whenNotPaused() returns (bool success) {
+    ) public onlyOwnerOfProxy() whenNotPaused() returns (bool success) {
         emit TransferStorm(_msgSender(), _recipient, _amount);
         
         _transfer(_msgSender(), _recipient, _amount);
@@ -124,13 +123,13 @@ contract Zeus is Pausable {
     }
     
     //ALLOW TO SPEND ON BEHALF OF OWNER
-    function allowFromStorm(address _to,uint256 _amount) public onlyOwnerOrPerpetuals() {
+    function allowFromStorm(address _to,uint256 _amount) public onlyOwnerOfProxy() {
         _increaseAllowance(owner(), _to, _amount);
     }
 
     // ## PRIVATE FUNCTIONS ##
     //_SETFEE
-    function setFee(uint256 _fee) public onlyOwnerOrPerpetuals() whenNotPaused() returns(bool) {
+    function setFee(uint256 _fee) public onlyOwnerOfProxy() whenNotPaused() returns(bool) {
         emit FeeChanged(_msgSender(), fee, _fee);
         
         fee = _fee;
