@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
+import "./SafeMath.sol";
+import "./Ownable.sol";
+import "./Strings.sol";
+import "./Address.sol";
 
 contract BoltTokenProxy is Ownable {
     using SafeMath for uint256;
@@ -32,14 +32,6 @@ contract BoltTokenProxy is Ownable {
     modifier onlyImplementation() {
         require(_msgSender() == implementationAddress, "The sender is not a Zeus implementation");
         require(_msgSender().isContract(), "The sender is not a contract");
-        _;
-    }
-
-    modifier oneTimeADay() {
-        require(
-            block.timestamp.sub(lastTimestamp) >= 1 days,
-            "This function can be called only once per day"
-        );
         _;
     }
 
@@ -138,7 +130,7 @@ contract BoltTokenProxy is Ownable {
     }
 
     //MINT (ONE TIME A DAY)
-    function mint(uint256 _amount) public onlyOwner() oneTimeADay() returns(bool) {
+    function mint(uint256 _amount) public onlyOwner() returns(bool) {
         emit Mint(_msgSender(), _amount);
         
         _mint(_amount);
