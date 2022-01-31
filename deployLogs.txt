@@ -1,0 +1,94 @@
+Starting migrations...
+======================
+> Network name:    'testnet'
+> Network id:      97
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x375ffb055bf23fc7e168bfc7d8736a804dacb3cdd39bd6d0e33f6f9b79d2d909
+   > Blocks: 5            Seconds: 14
+   > contract address:    0xd59A843E245C3bd82350cb03FD2aEB6bbA94C1c1
+   > block number:        16344583
+   > block timestamp:     1643632830
+   > account:             0x49995fa50e625382fE6178381C5e3E8611aa551E
+   > balance:             5.68697518
+   > gas used:            248854 (0x3cc16)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00248854 ETH
+
+   Pausing for 10 confirmations...
+   -------------------------------
+   > confirmation number: 3 (block: 16344591)
+   > confirmation number: 4 (block: 16344592)
+   > confirmation number: 5 (block: 16344593)
+   > confirmation number: 6 (block: 16344594)
+   > confirmation number: 7 (block: 16344595)
+   > confirmation number: 9 (block: 16344597)
+   > confirmation number: 10 (block: 16344598)
+
+   Deploying 'BoltTokenProxy'
+   --------------------------
+   > transaction hash:    0x4d6b18623932fcbf3918ca902283801a0ba7e4dd95c6c456581f0f33766d7678
+   > Blocks: 4            Seconds: 14
+   > contract address:    0x1b3b2F0E785bE19688d96D00302b2D3983CbB7C5
+   > block number:        16344606
+   > block timestamp:     1643632899
+   > account:             0x49995fa50e625382fE6178381C5e3E8611aa551E
+   > balance:             5.66820359
+   > gas used:            1877159 (0x1ca4a7)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01877159 ETH
+
+   Pausing for 10 confirmations...
+   -------------------------------
+   > confirmation number: 2 (block: 16344610)
+   > confirmation number: 4 (block: 16344612)
+   > confirmation number: 5 (block: 16344613)
+   > confirmation number: 6 (block: 16344614)
+   > confirmation number: 7 (block: 16344615)
+   > confirmation number: 9 (block: 16344617)
+   > confirmation number: 10 (block: 16344618)
+
+   Deploying 'Zeus'
+   ----------------
+   > transaction hash:    0xcfe108d31e81a8312c8970978839b88b9e86c23b70c73ce3f015eb75ecabc82b
+   > Blocks: 5            Seconds: 14
+   > contract address:    0x10870F602cD65bf9f7d1E4326f5deF9166dB4b96
+   > block number:        16344625
+   > block timestamp:     1643632956
+   > account:             0x49995fa50e625382fE6178381C5e3E8611aa551E
+   > balance:             5.64473304
+   > gas used:            2347055 (0x23d02f)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.02347055 ETH
+
+   Pausing for 10 confirmations...
+   -------------------------------
+   > confirmation number: 2 (block: 16344630)
+   > confirmation number: 4 (block: 16344632)
+   > confirmation number: 5 (block: 16344633)
+   > confirmation number: 7 (block: 16344635)
+   > confirmation number: 8 (block: 16344636)
+   > confirmation number: 9 (block: 16344637)
+   > confirmation number: 11 (block: 16344639)
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.04473068 ETH
+
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.04473068 ETH
+
+
